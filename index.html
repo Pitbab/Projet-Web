@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="game">
+    <div id="notification"></div>
+
+    <div class="tab">
+        <button onclick="showSection('main')" class="active" id="mainTab">Game</button>
+        <button onclick="showSection('achievements')" id="achievementsTab">Achievements</button>
+    </div>
+
+    <div id="main" class="section active">
+        <h1>🍪 Cookie Clicker</h1>
+        <p>Cookies: <span id="cookieCount">0</span></p>
+        <p>CPS: <span id="cpsCount">0</span></p>
+        <button id="clickButton">Click for Cookies</button>
+        <h3>Buildings</h3>
+        <div id="buildings"></div>
+        <h3>Upgrades</h3>
+        <div id="upgrades"></div>
+    </div>
+
+    <div id="achievements" class="section">
+        <h1>Achievements</h1>
+        <div id="achievementsList"></div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
