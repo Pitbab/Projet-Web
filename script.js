@@ -148,6 +148,8 @@ function createParticle() {
 
 //test ceci est une modification
 
+//test
+
 document.getElementById('clickButton').addEventListener('click', incrementCookie);
 setInterval(generateCookies, 1000);
 updateDisplay();
