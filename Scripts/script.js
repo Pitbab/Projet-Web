@@ -42,7 +42,7 @@ function incrementCookie() {
 
 function generateCookies() {
     cookies += calculateCPS() * DisplayFrameRate / 1000;
-    timePlayed++;
+    timePlayed+= DisplayFrameRate / 1000;
     achievementManager.checkTimeAchievements(timePlayed);
     updateDisplay();
 
