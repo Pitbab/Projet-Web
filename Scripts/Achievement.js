@@ -1,27 +1,4 @@
-﻿
-
-// list of all achievements
-const achievements = [
-    new Achievement('First Cookie!', 1, TriggerType.COOKIE),
-    new Achievement('Builder Beginner', 5, TriggerType.BUILDING),
-    new Achievement('Dedicated Player', 120, TriggerType.TIME), // 120 secondes de jeu
-    new Achievement('Master Clicker', 100, TriggerType.CLICK),
-    new Achievement('Grandma Lover', 5, TriggerType.BUILDINGTYPE, 'Grandma'),
-    new Achievement('Factory Tycoon', 50, TriggerType.BUILDINGTYPE, 'Factory'),
-];
-
-// type of triggers
-const TriggerType = Object.freeze({
-    BUILDING: 'Building',
-    TIME: 'Time',
-    BUILDINGTYPE: 'BuildingType',
-    COOKIE: 'Cookie',
-    CLICK: 'Click',
-
-})
-
-
-class Achievement {
+﻿class Achievement {
     constructor(name, requirement, triggerType, target = null, unlocked = false) {
 
         // small check if the trigger type does exist
@@ -36,6 +13,26 @@ class Achievement {
         this.unlocked = unlocked;
     }
 }
+
+// type of triggers
+const TriggerType = Object.freeze({
+    BUILDING: 'Building',
+    TIME: 'Time',
+    BUILDINGTYPE: 'BuildingType',
+    COOKIE: 'Cookie',
+    CLICK: 'Click',
+
+})
+
+// list of all achievements
+const achievements = [
+    new Achievement('First Cookie!', 1, TriggerType.COOKIE),
+    new Achievement('Builder Beginner', 5, TriggerType.BUILDING),
+    new Achievement('Dedicated Player', 120, TriggerType.TIME), // 120 secondes de jeu
+    new Achievement('Master Clicker', 100, TriggerType.CLICK),
+    new Achievement('Grandma Lover', 5, TriggerType.BUILDINGTYPE, 'Grandma'),
+    new Achievement('Factory Tycoon', 50, TriggerType.BUILDINGTYPE, 'Factory'),
+];
 
 class AchievementManager {
     constructor() {

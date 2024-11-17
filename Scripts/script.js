@@ -6,6 +6,8 @@ const upgradesElem = document.getElementById('upgrades');
 const achievementsListElem = document.getElementById('achievementsList');
 const notificationElem = document.getElementById('notification');
 
+const DisplayFrameRate = 100;
+
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
     document.querySelectorAll('.tab button').forEach(button => button.classList.remove('active'));
@@ -39,7 +41,7 @@ function incrementCookie() {
 }
 
 function generateCookies() {
-    cookies += calculateCPS();
+    cookies += calculateCPS() * DisplayFrameRate / 1000;
     timePlayed++;
     achievementManager.checkTimeAchievements(timePlayed);
     updateDisplay();
@@ -59,6 +61,6 @@ function createParticle() {
 }
 
 document.getElementById('clickButton').addEventListener('click', incrementCookie);
-setInterval(generateCookies, 1000);
+setInterval(generateCookies, DisplayFrameRate);
 updateDisplay();
 renderAchievements();
