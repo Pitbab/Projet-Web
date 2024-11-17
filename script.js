@@ -146,6 +146,8 @@ function createParticle() {
     setTimeout(() => particle.remove(), 1000);
 }
 
+//test ceci est une modification
+
 document.getElementById('clickButton').addEventListener('click', incrementCookie);
 setInterval(generateCookies, 1000);
 updateDisplay();
