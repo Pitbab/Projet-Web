@@ -71,7 +71,7 @@ function checkAchievements() {
         }
     });
 }
-
+// Fonction achievement
 function renderAchievements() {
     achievementsListElem.innerHTML = '';
     achievements.forEach(achievement => {
