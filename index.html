@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<!-- Start Panel -->
+<div id="startPanel" class="start-panel">
+    <button id="startButton" class="start-button">Start Game</button>
+</div>
+
 <div id="game">
     <div id="notification"></div>
 
@@ -31,6 +36,7 @@
         <div id="achievementsList"></div>
     </div>
 </div>
+
 <script src="Scripts/PlayerStats.js"></script>
 <script src="Scripts/Achievement.js"></script>
 <script src="Scripts/Building.js"></script>
@@ -38,5 +44,12 @@
 <script src="Scripts/script.js"></script>
 <script src="Scripts/Store.js"></script>
 <script src="Scripts/Notifications.js"></script>
+<script>
+    // Hide the start panel and show the game when start button is clicked
+    document.getElementById("startButton").addEventListener("click", function() {
+        document.getElementById("startPanel").style.display = "none";
+        document.getElementById("game").style.display = "block";
+    });
+</script>
 </body>
 </html>

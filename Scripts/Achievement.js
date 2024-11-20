@@ -104,6 +104,7 @@ class AchievementManager {
     unlockAchievement(achievement) {
         achievement.unlocked = true;
         showNotification(`🎉 Achievement Unlocked: ${achievement.name}`);
+        AchievementSound.play();
         renderAchievements();
     }
 }

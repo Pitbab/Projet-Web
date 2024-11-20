@@ -1,7 +1,7 @@
 ﻿const notificationQueue = [];
 let isDisplayingNotification = false;
-const notificationFadeTime = 500;
-const notificationInterval = 1000;
+const notificationFadeTime = 1000;
+const notificationInterval = 2000;
 
 // create notifications queue to handle multiple ones at the same time
 function showNotification(message) {

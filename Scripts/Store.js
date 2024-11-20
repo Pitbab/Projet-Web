@@ -47,6 +47,9 @@ function buyUpgrade(index) {
         cookies -= upgrade.cost;
         clickMultiplier *= upgrade.multiplier;
         upgrade.purchased = true;
+
+        UpgradeSound.play();
+
         showNotification(`🛠️ Upgrade Purchased: ${upgrade.name}`);
         updateDisplay();
     }
