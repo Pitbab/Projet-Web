@@ -1,15 +1,15 @@
 ﻿class Achievement {
     constructor(name, requirement, triggerType, target = null, unlocked = false) {
 
-        // small check if the trigger type does exist
+        // effectue une vérification le type de trigger existe dans les données
         if (!Object.values(TriggerType).includes(triggerType)) {
             throw new Error(`Invalid triggerType: ${triggerType}`);
         }
 
         this.name = name;
-        this.requirement = requirement; // The target number
+        this.requirement = requirement; // le chiffre voulu
         this.triggerType = triggerType;
-        this.target = target; // Specific target for buildingType
+        this.target = target; // cible spécifique au sein d'un type de trigger
         this.unlocked = unlocked;
     }
 }
@@ -24,7 +24,7 @@ const TriggerType = Object.freeze({
 
 })
 
-// list of all achievements
+// liste de tous les succès
 const achievements = [
     new Achievement('First Cookie!', 1, TriggerType.COOKIE),
     new Achievement('Builder Beginner', 5, TriggerType.BUILDING),
@@ -40,7 +40,7 @@ class AchievementManager {
     }
 
 
-    // check for cookie related achievements
+    // regarde pour les succès lié au nombre de cookie "thème à changer"
     checkCookieAchievements(cookies) {
         this.achievements.forEach((achievement) => {
             if (achievement.triggerType === TriggerType.COOKIE &&
@@ -51,7 +51,7 @@ class AchievementManager {
         });
     }
 
-    // check for building type related achievements
+    // regarde pour les succès lié au type batiments "thème à changer"
     checkBuildingTypeAchievements(buildingName, totalBuilt) {
         this.achievements.forEach((achievement) => {
             if (
@@ -65,7 +65,7 @@ class AchievementManager {
         });
     }
 
-    // check for building related achievements
+    // regarde pour les succès lié au batiments en général "thème à changer"
     checkTotalBuildingAchievements(totalBuildings) {
         this.achievements.forEach((achievement) => {
             if (
@@ -78,7 +78,7 @@ class AchievementManager {
         });
     }
 
-    // check for time related achievements
+    // regarde pour les succès lié au temps de jeux
     checkTimeAchievements(timePlayed) {
         this.achievements.forEach((achievement) => {
             if (achievement.triggerType === TriggerType.TIME &&
@@ -89,7 +89,7 @@ class AchievementManager {
         });
     }
 
-    // check for click related achievements
+    // regarde pour les succès lié au cliques tu joueurs
     checkClickAchievements(clicks) {
         this.achievements.forEach((achievement) => {
             if (achievement.triggerType === TriggerType.CLICK &&
@@ -100,7 +100,7 @@ class AchievementManager {
         });
     }
 
-    // trigger notifications
+    // envoie un notification
     unlockAchievement(achievement) {
         achievement.unlocked = true;
         showNotification(`🎉 Achievement Unlocked: ${achievement.name}`);
@@ -109,7 +109,7 @@ class AchievementManager {
     }
 }
 
-// set achievements in the achievements tab
+// fait appraitre les succès dans le section "achievements" dans le html
 function renderAchievements() {
     achievementsListElem.innerHTML = '';
     achievementManager.achievements.forEach((achievement) => {

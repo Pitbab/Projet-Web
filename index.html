@@ -13,7 +13,7 @@
     <h1>🍪 Cookie Clicker</h1>
 </header>
 
-<!-- Start Panel -->
+<!-- Panneau du début -->
 <div id="startPanel" class="start-panel">
     <button id="startButton" class="start-button">Start Game</button>
 </div>
@@ -29,19 +29,19 @@
 
     <div id="main" class="section active">
         <div class="main-container">
-            <!-- Left Panel -->
+            <!-- Section à gauche -->
             <div class="left-panel" id="left-panel">
                 <p>Cookies: <span id="cookieCount">0</span></p>
                 <p>CPS: <span id="cpsCount">0</span></p>
                 <button id="clickButton">Click for Cookies</button>
             </div>
 
-            <!-- Middle Panel -->
+            <!-- Section au milieu -->
             <div class="middle-panel">
                 <!-- Currently empty -->
             </div>
 
-            <!-- Right Panel -->
+            <!-- Section à droite -->
             <div class="right-panel">
                 <h3>Upgrades</h3>
                 <div id="upgrades"></div>
@@ -60,14 +60,14 @@
         <h1>Options</h1>
 
         <div class="SoundsOptions">
-            <!-- Background Music Volume -->
+            <!-- Slider pour le volume de la music en arrière plan -->
             <div class="volume-item">
                 <label for="bgVolumeSlider">Background Music Volume</label>
                 <input type="range" id="bgVolumeSlider" min="0" max="1" step="0.01" value="0.05">
                 <span id="bgVolumeValue">5%</span>
             </div>
 
-            <!-- Sound Effects Volume -->
+            <!-- Slider pour le volume des effets audio -->
             <div class="volume-item">
                 <label for="sfxVolumeSlider">Sound Effects Volume</label>
                 <input type="range" id="sfxVolumeSlider" min="0" max="1" step="0.01" value="1">
@@ -88,7 +88,7 @@
 <script src="Scripts/Notifications.js"></script>
 <script src="Scripts/Options.js"></script>
 <script>
-    // Hide the start panel and show the game when start button is clicked
+    // Cache le panneau du début quand on appuie sur le bouton start
     document.getElementById("startButton").addEventListener("click", function() {
         document.getElementById("startPanel").style.display = "none";
         document.getElementById("game").style.display = "block";

@@ -8,12 +8,12 @@ const notificationElem = document.getElementById('notification');
 
 const DisplayFrameRate = 100;
 
-//sounds
+//les sons déclarés
 const UpgradeSound = new Audio('/Sounds/UpgradeSound.wav');
 const AchievementSound = new Audio('/Sounds/AchievementSound.wav');
 const BackgroundMusic = new Audio('/Sounds/BG2.wav');
 
-// browser block autoplay
+// commence la musique
 function startMusic() {
     BackgroundMusic.loop = true;
     BackgroundMusic.volume = 0.05;
@@ -21,6 +21,7 @@ function startMusic() {
 }
 
 
+//gère la transition entre les onglets (game, achievements et options)
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
     document.querySelectorAll('.tab button').forEach(button => button.classList.remove('active'));
@@ -28,10 +29,12 @@ function showSection(sectionId) {
     document.getElementById(sectionId + 'Tab').classList.add('active');
 }
 
+//calul le nombre de cookie par seconde produit "thème à changer"
 function calculateCPS() {
     return buildings.reduce((total, building) => total + building.cps * building.amount, 0);
 }
 
+//met à jour l'écran (les batiments et les upgrades)
 function updateDisplay() {
     cookieCountElem.textContent = Math.floor(cookies);
     cpsCountElem.textContent = calculateCPS();
@@ -39,6 +42,7 @@ function updateDisplay() {
     renderUpgrades();
 }
 
+//ajoute des cookies quand on clique "thème à changer"
 function incrementCookie() {
 
     //update counts
@@ -53,6 +57,7 @@ function incrementCookie() {
 
 }
 
+//ajoute des cookies générés par les batiments "thème à changer"
 function generateCookies() {
     cookies += calculateCPS() * DisplayFrameRate / 1000;
     timePlayed+= DisplayFrameRate / 1000;
@@ -61,7 +66,7 @@ function generateCookies() {
 
 }
 
-// Create a particle effect on click
+// crée des particules quand on appuie sur le bouton de cookie "thème à changer"
 function createParticle() {
     const particle = document.createElement('div');
     const panelWidth = document.getElementById('left-panel').offsetWidth;
@@ -75,12 +80,12 @@ function createParticle() {
     setTimeout(() => particle.remove(), 1000);
 }
 
-//un hide game -> browser block audio auto play
+//enlève la panneau du début. doit faire ceci car certain browser bloquent le son en auto play
 document.getElementById("startButton").addEventListener("click", function() {
-    // Hide the start panel
+    // cache le panneau du début
     document.getElementById("startPanel").style.display = "none";
 
-    // Show the game content
+    // montre le contenu du jeu
     document.getElementById("game").style.display = "block"; // Show the game if you initially hid it
     startMusic();
 });

@@ -1,16 +1,16 @@
 ﻿
-//handle buying buildings
+//gère l'achat des batiments TODO create more building type
 function buyBuilding(index) {
     const building = buildings[index];
     if (cookies >= building.cost) {
         cookies -= building.cost;
 
-        // update counters
+        // met à jour les compteurs
         building.amount++;
         building.totalBuilt++;
         totalBuildingConstructed++;
 
-        // increase cost each time
+        // incrémente le prix du batiment à chaque fois qu'on l'achète
         building.cost = Math.round(building.cost * 1.15);
 
         updateDisplay();
@@ -19,28 +19,28 @@ function buyBuilding(index) {
     }
 }
 
-// handle selling buildings
+//gère la vente des batiments
 function sellBuilding(index) {
     const building = buildings[index];
     if (building.amount > 0) {
-        // Calculate the amount of cookies the player will get back (e.g., 50% of the building's cost)
+        //calcul combien de monnaie le joueur aura en retour
         const sellPrice = Math.round(building.cost / 1.15);
 
-        // Update the player's cookies
+        // met à jour la monnaie du joueur
         cookies += sellPrice;
 
-        // Decrease the amount of the building owned
+        // met à jour le compteur de batiments
         building.amount--;
         totalBuildingConstructed--;
 
-        // Update building cost (optional, if you want to decrease price on selling as well)
-        building.cost = Math.round(sellPrice); // This could be adjusted based on your design
+        // met à jour le prix du batiment
+        building.cost = Math.round(sellPrice);
 
         updateDisplay();
     }
 }
 
-// handle buying upgrades TODO create more upgrade type
+//gère l'achat des upgrades TODO create more upgrade type
 function buyUpgrade(index) {
     const upgrade = upgrades[index];
     if (cookies >= upgrade.cost && !upgrade.purchased) {

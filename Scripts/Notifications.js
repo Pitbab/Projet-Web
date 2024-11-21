@@ -3,7 +3,7 @@ let isDisplayingNotification = false;
 const notificationFadeTime = 1000;
 const notificationInterval = 2000;
 
-// create notifications queue to handle multiple ones at the same time
+// crée un queue de notification pour géré en cas de multiple notifications en meme temps
 function showNotification(message) {
     notificationQueue.push(message);
     if (!isDisplayingNotification) {
@@ -12,7 +12,7 @@ function showNotification(message) {
 }
 
 function displayNextNotification() {
-    // Exit if no more notifications
+    // quitter s'il n'y a plus de notifications
     if (notificationQueue.length === 0) {
         isDisplayingNotification = false;
         return;
