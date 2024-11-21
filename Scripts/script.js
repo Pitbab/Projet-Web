@@ -64,16 +64,18 @@ function generateCookies() {
 // Create a particle effect on click
 function createParticle() {
     const particle = document.createElement('div');
+    const panelWidth = document.getElementById('left-panel').offsetWidth;
     particle.className = 'particle';
-    particle.style.left = `${Math.random() * 100}px`;
+    particle.style.bottom = '0px';
+    particle.style.left = `${(panelWidth/2) - (Math.random() * 2 -1) * 100}px`;
     particle.style.color = '#b5651d';
     particle.textContent = '🍪';
 
-    document.getElementById('game').appendChild(particle);
+    document.getElementById('left-panel').appendChild(particle);
     setTimeout(() => particle.remove(), 1000);
 }
 
-//un hide game
+//un hide game -> browser block audio auto play
 document.getElementById("startButton").addEventListener("click", function() {
     // Hide the start panel
     document.getElementById("startPanel").style.display = "none";

@@ -3,37 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Clicker Game</title>
+    <title>Clicker game</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- Header -->
+<header>
+    <h1>🍪 Cookie Clicker</h1>
+</header>
+
 <!-- Start Panel -->
 <div id="startPanel" class="start-panel">
     <button id="startButton" class="start-button">Start Game</button>
 </div>
 
-<div id="game">
+<div id="game" style="display: none;">
     <div id="notification"></div>
 
     <div class="tab">
         <button onclick="showSection('main')" class="active" id="mainTab">Game</button>
         <button onclick="showSection('achievements')" id="achievementsTab">Achievements</button>
+        <button onclick="showSection('options')" id="optionsTab">Options</button>
     </div>
 
     <div id="main" class="section active">
-        <h1>🍪 Cookie Clicker</h1>
-        <p>Cookies: <span id="cookieCount">0</span></p>
-        <p>CPS: <span id="cpsCount">0</span></p>
-        <button id="clickButton">Click for Cookies</button>
-        <h3>Buildings</h3>
-        <div id="buildings"></div>
-        <h3>Upgrades</h3>
-        <div id="upgrades"></div>
+        <div class="main-container">
+            <!-- Left Panel -->
+            <div class="left-panel" id="left-panel">
+                <p>Cookies: <span id="cookieCount">0</span></p>
+                <p>CPS: <span id="cpsCount">0</span></p>
+                <button id="clickButton">Click for Cookies</button>
+            </div>
+
+            <!-- Middle Panel -->
+            <div class="middle-panel">
+                <!-- Currently empty -->
+            </div>
+
+            <!-- Right Panel -->
+            <div class="right-panel">
+                <h3>Upgrades</h3>
+                <div id="upgrades"></div>
+                <h3>Buildings</h3>
+                <div id="buildings"></div>
+            </div>
+        </div>
     </div>
 
     <div id="achievements" class="section">
         <h1>Achievements</h1>
         <div id="achievementsList"></div>
+    </div>
+
+    <div id="options" class="section">
+        <h1>Options</h1>
+
+        <div class="SoundsOptions">
+            <!-- Background Music Volume -->
+            <div class="volume-item">
+                <label for="bgVolumeSlider">Background Music Volume</label>
+                <input type="range" id="bgVolumeSlider" min="0" max="1" step="0.01" value="0.05">
+                <span id="bgVolumeValue">5%</span>
+            </div>
+
+            <!-- Sound Effects Volume -->
+            <div class="volume-item">
+                <label for="sfxVolumeSlider">Sound Effects Volume</label>
+                <input type="range" id="sfxVolumeSlider" min="0" max="1" step="0.01" value="1">
+                <span id="sfxVolumeValue">100%</span>
+            </div>
+        </div>
+
+
     </div>
 </div>
 
@@ -44,6 +86,7 @@
 <script src="Scripts/script.js"></script>
 <script src="Scripts/Store.js"></script>
 <script src="Scripts/Notifications.js"></script>
+<script src="Scripts/Options.js"></script>
 <script>
     // Hide the start panel and show the game when start button is clicked
     document.getElementById("startButton").addEventListener("click", function() {
