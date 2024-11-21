@@ -38,11 +38,8 @@ function renderUpgrades() {
         // If the upgrade is already purchased, hide its display
         if (upgrade.purchased) {
             const upgradeDiv = document.getElementById(`upgrade-${index}`);
-            const upgradeInfo = upgradeDiv.querySelector('.upgrade-info');
-            const buyButton = upgradeDiv.querySelector('.buy-button');
 
-            upgradeInfo.style.display = 'none';  // Hide the upgrade name and cost
-            buyButton.style.display = 'none';    // Hide the buy button
+            upgradeDiv.style.display = 'none';
         }
     });
 }

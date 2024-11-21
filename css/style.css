@@ -96,13 +96,45 @@ header {
     height: auto;
 }
 
-/* Right Panel */
+/* Right Panel Styling */
 .right-panel {
-    flex: 1;
-    background-color: #fce4ec;
-    padding: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Scrollable container for Upgrades */
+#upgrades {
+    max-height: 250px; /* Adjust this height as per your layout */
+    overflow-y: auto;  /* Enables vertical scrolling */
+    margin-bottom: 20px; /* Adds spacing between sections */
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+/* Scrollable container for Buildings */
+#buildings {
+    max-height: 250px; /* Adjust this height as per your layout */
+    overflow-y: auto;  /* Enables vertical scrolling */
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+/* Styling for each item (Upgrade or Building) */
+#upgrades div, #buildings div {
+    margin-bottom: 10px;  /* Adds spacing between each upgrade/building */
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 5px; /* Adds spacing between text and buttons */
 }
 
 /* Right Panel Content */
