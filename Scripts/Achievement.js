@@ -1,15 +1,17 @@
 ﻿class Achievement {
-    constructor(name, requirement, triggerType, target = null, unlocked = false) {
+    constructor(name, requirement, triggerType, description, imagePath, target = null, unlocked = false) {
 
-        // effectue une vérification le type de trigger existe dans les données
+        // Verify that the trigger type is valid
         if (!Object.values(TriggerType).includes(triggerType)) {
             throw new Error(`Invalid triggerType: ${triggerType}`);
         }
 
         this.name = name;
-        this.requirement = requirement; // le chiffre voulu
+        this.requirement = requirement; // The required number
         this.triggerType = triggerType;
-        this.target = target; // cible spécifique au sein d'un type de trigger
+        this.description = description; // Description of the achievement
+        this.imagePath = imagePath; // Path to the achievement image
+        this.target = target; // Specific target within a trigger type
         this.unlocked = unlocked;
     }
 }
@@ -26,12 +28,12 @@ const TriggerType = Object.freeze({
 
 // liste de tous les succès
 const achievements = [
-    new Achievement('First Cookie!', 1, TriggerType.COOKIE),
-    new Achievement('Builder Beginner', 5, TriggerType.BUILDING),
-    new Achievement('Dedicated Player', 120, TriggerType.TIME), // 120 secondes de jeu
-    new Achievement('Master Clicker', 100, TriggerType.CLICK),
-    new Achievement('Grandma Lover', 5, TriggerType.BUILDINGTYPE, 'Grandma'),
-    new Achievement('Factory Tycoon', 50, TriggerType.BUILDINGTYPE, 'Factory'),
+    new Achievement('First Doggo!', 1, TriggerType.COOKIE, 'Make your first Doggo.', "Img/Achievements/Doggo.png"),
+    new Achievement('Builder Beginner', 5, TriggerType.BUILDING, 'Construct 5 buildings.', 'Img/Achievements/Hammer.png'),
+    new Achievement('Dedicated Player', 120, TriggerType.TIME, 'Play for 2 minutes straight.', 'Img/Achievements/Time.png'), // 120 seconds of gameplay
+    new Achievement('Master Clicker', 100, TriggerType.CLICK, 'Click 100 times.', 'Img/Achievements/Cursor.png'),
+    new Achievement('Bone Lover', 5, TriggerType.BUILDINGTYPE, 'Buy 5 Bones.', 'Img/Achievements/Bone.png', 'Bone'),
+    new Achievement('Factory Tycoon', 50, TriggerType.BUILDINGTYPE, 'Build 50 Factories.', 'Factory'),
 ];
 
 class AchievementManager {
@@ -111,13 +113,51 @@ class AchievementManager {
 
 // fait appraitre les succès dans le section "achievements" dans le html
 function renderAchievements() {
-    achievementsListElem.innerHTML = '';
+    achievementsListElem.innerHTML = ''; // Clear the existing achievements
+
     achievementManager.achievements.forEach((achievement) => {
+        // Create the outer container for the achievement (Title, Image, Description)
+        const container = document.createElement('div');
+        container.className = 'achievement-container';
+
+        // Create the square div for the image
+        const square = document.createElement('div');
+        square.className = 'achievement-square';
+
+        // If the achievement is unlocked, show the image and add description later
         if (achievement.unlocked) {
-            const p = document.createElement('p');
-            p.textContent = `🎉 ${achievement.name}`;
-            achievementsListElem.appendChild(p);
+            square.classList.add('unlocked'); // Add "unlocked" class if the achievement is unlocked
+
+            // Add image
+            const img = document.createElement('img');
+            img.src = achievement.imagePath;
+            img.alt = achievement.name;
+            square.appendChild(img);
+        } else {
+            // Locked achievements show a placeholder
+            const placeholderImg = document.createElement('div');
+            placeholderImg.className = 'placeholder';
+            placeholderImg.textContent = '?';
+            square.appendChild(placeholderImg);
         }
+
+        // Add title above the square
+        const name = document.createElement('div');
+        name.className = 'achievement-name';
+        name.textContent = achievement.name;
+        container.appendChild(name);
+
+        // Add the square to the container
+        container.appendChild(square);
+
+        // Add description below the square (initially hidden)
+        const description = document.createElement('div');
+        description.className = 'achievement-description';
+        description.textContent = achievement.description;
+        container.appendChild(description);
+
+        // Add the container to the achievements list
+        achievementsListElem.appendChild(container);
     });
 }
 

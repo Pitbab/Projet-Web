@@ -3,10 +3,13 @@
 const upgrades = [
     { name: 'Double Clicks', cost: 50, multiplier: 2, purchased: false },
     { name: 'Triple Clicks', cost: 200, multiplier: 3, purchased: false },
+    { name: 'Quadruple Clicks', cost: 200, multiplier: 4, purchased: false },
+    { name: 'Quintuple Clicks', cost: 200, multiplier: 5, purchased: false },
 ];
 
 //affichage des upgrades
 function renderUpgrades() {
+
     upgrades.forEach((upgrade, index) => {
         const upgradeDiv = document.getElementById(`upgrade-${index}`);
 

@@ -74,7 +74,7 @@ function createParticle() {
     particle.style.bottom = '0px';
     particle.style.left = `${(panelWidth/2) - (Math.random() * 2 -1) * 100}px`;
     particle.style.color = '#b5651d';
-    particle.textContent = '🍪';
+    particle.textContent = '🐶';
 
     document.getElementById('left-panel').appendChild(particle);
     setTimeout(() => particle.remove(), 1000);

@@ -1,8 +1,8 @@
 ﻿
 //liste des batiments
 const buildings = [
-    { name: 'Cursor', cost: 10, cps: 0.1, amount: 0, totalBuilt: 0 },
-    { name: 'Grandma', cost: 100, cps: 1, amount: 0, totalBuilt: 0 },
+    { name: 'Paw', cost: 10, cps: 0.1, amount: 0, totalBuilt: 0 },
+    { name: 'Bone', cost: 100, cps: 1, amount: 0, totalBuilt: 0 },
     { name: 'Factory', cost: 1000, cps: 10, amount: 0, totalBuilt: 0 },
 ];
 
@@ -38,5 +38,28 @@ function renderBuildings() {
             `;
             buildingsElem.appendChild(div);
         }
+    });
+}
+
+const buildingEmojis = ['🐾', '🦴', '🏭']; // Emojis for each building type
+
+function renderEmojis() {
+    const emojiContainer = document.getElementById('emoji-container');
+    emojiContainer.innerHTML = ''; // Clear existing emojis
+
+    buildings.forEach((building, index) => {
+        if(building.amount > 0)
+        {
+            const row = document.createElement('div');
+            row.className = 'building-row';
+
+            // Render building name and its emojis
+            row.innerHTML = `
+            <span>${building.name}:</span> ${buildingEmojis[index].repeat(building.amount)}
+        `;
+
+            emojiContainer.appendChild(row);
+        }
+
     });
 }

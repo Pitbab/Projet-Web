@@ -14,6 +14,8 @@ function buyBuilding(index) {
         building.cost = Math.round(building.cost * 1.15);
 
         updateDisplay();
+        renderEmojis();
+
         achievementManager.checkBuildingTypeAchievements(building.name, building.totalBuilt)
         achievementManager.checkTotalBuildingAchievements(totalBuildingConstructed);
     }
@@ -37,6 +39,7 @@ function sellBuilding(index) {
         building.cost = Math.round(sellPrice);
 
         updateDisplay();
+        renderEmojis();
     }
 }
 
