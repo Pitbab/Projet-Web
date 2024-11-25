@@ -178,6 +178,7 @@ button {
     cursor: pointer;
     outline: none;
     margin-top: 50px;
+    transition: transform 0.2s ease; /* Transition fluide pour le rebond */
 }
 
 /* ======= Start Panel ======= */
@@ -294,3 +295,27 @@ button {
 .volume-item input[type="range"] {
     margin-bottom: 10px;
 }
+
+
+#clickButton:active {
+    transform: scale(0.9); /* Réduction temporaire lors du clic */
+}
+
+/* Style pour l'éclaboussure de points */
+.click-effect {
+    position: absolute;
+    font-size: 20px;
+    animation: pop 0.5s ease forwards;
+}
+
+@keyframes pop {
+    0% {
+        transform: translateY(0px) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px) scale(1.5);
+        opacity: 0;
+    }
+}
+
