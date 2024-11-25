@@ -94,3 +94,29 @@ document.getElementById('clickButton').addEventListener('click', incrementCookie
 setInterval(generateCookies, DisplayFrameRate);
 updateDisplay();
 renderAchievements();
+
+/*Fonction pour creer des particule autour du clic*/
+document.getElementById("clickButton").addEventListener("click", function (event) {
+    const particleCount = 10; // Nombre de particules par clic
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+
+        // Générer une position aléatoire autour du clic
+        const angle = Math.random() * 2 * Math.PI; // Angle aléatoire
+        const radius = Math.random() * 50; // Distance maximale
+        const x = event.clientX + Math.cos(angle) * radius;
+        const y = event.clientY + Math.sin(angle) * radius;
+
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+
+        // Ajouter la particule au document
+        document.body.appendChild(particle);
+
+        // Supprimer la particule après l'animation
+        setTimeout(() => {
+            particle.remove();
+        }, 1000); // Temps égal à la durée de l'animation
+    }
+});
