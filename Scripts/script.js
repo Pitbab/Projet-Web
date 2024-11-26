@@ -6,7 +6,7 @@ const upgradesElem = document.getElementById('upgrades');
 const achievementsListElem = document.getElementById('achievementsList');
 const notificationElem = document.getElementById('notification');
 
-const DisplayFrameRate = 100;
+const DisplayFrameRate = 10;
 
 //les sons déclarés
 const UpgradeSound = new Audio('/Sounds/UpgradeSound.wav');
@@ -31,7 +31,7 @@ function showSection(sectionId) {
 
 //calul le nombre de cookie par seconde produit "thème à changer"
 function calculateCPS() {
-    return buildings.reduce((total, building) => total + building.cps * building.amount, 0);
+    return buildings.reduce((total, building) => total + (building.cps * building.Multipliers) * building.amount, 0);
 }
 
 //met à jour l'écran (les batiments et les upgrades)
@@ -50,7 +50,6 @@ function incrementCookie() {
     playerClicks ++;
     manualCookies += clickMultiplier;
 
-    createParticle();
     updateDisplay();
     achievementManager.checkCookieAchievements(cookies);
     achievementManager.checkClickAchievements(playerClicks)
@@ -66,20 +65,6 @@ function generateCookies() {
 
 }
 
-// crée des particules quand on appuie sur le bouton de cookie "thème à changer"
-function createParticle() {
-    const particle = document.createElement('div');
-    const panelWidth = document.getElementById('left-panel').offsetWidth;
-    particle.className = 'particle';
-    particle.style.bottom = '0px';
-    particle.style.left = `${(panelWidth/2) - (Math.random() * 2 -1) * 100}px`;
-    particle.style.color = '#b5651d';
-    particle.textContent = '🐶';
-
-    document.getElementById('left-panel').appendChild(particle);
-    setTimeout(() => particle.remove(), 1000);
-}
-
 //enlève la panneau du début. doit faire ceci car certain browser bloquent le son en auto play
 document.getElementById("startButton").addEventListener("click", function() {
     // cache le panneau du début
@@ -90,10 +75,46 @@ document.getElementById("startButton").addEventListener("click", function() {
     startMusic();
 });
 
-document.getElementById('clickButton').addEventListener('click', incrementCookie);
-setInterval(generateCookies, DisplayFrameRate);
-updateDisplay();
-renderAchievements();
+const floatingButtonsContainer = document.getElementById('floatingButtonsContainer');
+
+function createFloatingButton() {
+    const button = document.createElement('button');
+    button.classList.add('floating-button');
+    button.innerText = "+1000";
+
+    // Positionnement aléatoire
+    const containerWidth = floatingButtonsContainer.offsetWidth;
+    const containerHeight = floatingButtonsContainer.offsetHeight;
+    const randomX = Math.random() * (containerWidth - 100); // Réduit 50 pour tenir compte de la largeur du bouton
+    const randomY = Math.random() * (containerHeight - 100);
+
+    button.style.left = `${randomX}px`;
+    button.style.top = `${randomY}px`;
+
+    // Ajouter un événement au clic
+    button.addEventListener('click', () => {
+        cookies += 1000; // Ajoutez les points
+        updateDisplay(); // Mettez à jour l'affichage
+        button.remove(); // Supprimez le bouton
+    });
+
+    // Ajouter le bouton au conteneur
+    floatingButtonsContainer.appendChild(button);
+
+    // Supprimer automatiquement le bouton après un certain temps
+    setTimeout(() => {
+        if (button.parentElement) {
+            button.remove();
+        }
+    }, 5000); // Le bouton disparaît après 5 secondes
+}
+
+// Générer des boutons aléatoirement toutes les 5 à 10 secondes
+function startFloatingButtons() {
+    setInterval(() => {
+        createFloatingButton();
+    }, Math.random() * 5000 + 5000); // Intervalle entre 5 et 10 secondes
+}
 
 /*Fonction pour creer des particule autour du clic*/
 document.getElementById("clickButton").addEventListener("click", function (event) {
@@ -105,8 +126,8 @@ document.getElementById("clickButton").addEventListener("click", function (event
         // Générer une position aléatoire autour du clic
         const angle = Math.random() * 2 * Math.PI; // Angle aléatoire
         const radius = Math.random() * 50; // Distance maximale
-        const x = event.clientX + Math.cos(angle) * radius;
-        const y = event.clientY + Math.sin(angle) * radius;
+        const x = event.clientX + Math.cos(angle) * radius + window.scrollX;
+        const y = event.clientY + Math.sin(angle) * radius + window.scrollY;
 
         particle.style.left = `${x}px`;
         particle.style.top = `${y}px`;
@@ -120,3 +141,16 @@ document.getElementById("clickButton").addEventListener("click", function (event
         }, 1000); // Temps égal à la durée de l'animation
     }
 });
+// Lancer les boutons flottants lorsque le jeu démarre
+document.getElementById("startButton").addEventListener("click", function() {
+    startFloatingButtons();
+});
+
+document.getElementById('clickButton').addEventListener('click', incrementCookie);
+setInterval(generateCookies, DisplayFrameRate);
+updateDisplay();
+renderAchievements();
+
+
+
+

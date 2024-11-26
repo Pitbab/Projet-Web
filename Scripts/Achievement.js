@@ -33,7 +33,7 @@ const achievements = [
     new Achievement('Dedicated Player', 120, TriggerType.TIME, 'Play for 2 minutes straight.', 'Img/Achievements/Time.png'), // 120 seconds of gameplay
     new Achievement('Master Clicker', 100, TriggerType.CLICK, 'Click 100 times.', 'Img/Achievements/Cursor.png'),
     new Achievement('Bone Lover', 5, TriggerType.BUILDINGTYPE, 'Buy 5 Bones.', 'Img/Achievements/Bone.png', 'Bone'),
-    new Achievement('Factory Tycoon', 50, TriggerType.BUILDINGTYPE, 'Build 50 Factories.', 'Factory'),
+    new Achievement('Factory Tycoon', 50, TriggerType.BUILDINGTYPE, 'Build 50 Factories.','Img/factory.png', 'Factory'),
 ];
 
 class AchievementManager {
@@ -113,20 +113,20 @@ class AchievementManager {
 
 // fait appraitre les succès dans le section "achievements" dans le html
 function renderAchievements() {
-    achievementsListElem.innerHTML = ''; // Clear the existing achievements
+    achievementsListElem.innerHTML = '';
 
     achievementManager.achievements.forEach((achievement) => {
-        // Create the outer container for the achievement (Title, Image, Description)
+        // crée un container pour les achievements avec (Titre, Image, Description)
         const container = document.createElement('div');
         container.className = 'achievement-container';
 
-        // Create the square div for the image
+
         const square = document.createElement('div');
         square.className = 'achievement-square';
 
-        // If the achievement is unlocked, show the image and add description later
+        // si débloquer montrer l'image et la description
         if (achievement.unlocked) {
-            square.classList.add('unlocked'); // Add "unlocked" class if the achievement is unlocked
+            square.classList.add('unlocked');
 
             // Add image
             const img = document.createElement('img');
@@ -134,29 +134,29 @@ function renderAchievements() {
             img.alt = achievement.name;
             square.appendChild(img);
         } else {
-            // Locked achievements show a placeholder
+            // montre une image placeholder quand pas débloqué
             const placeholderImg = document.createElement('div');
             placeholderImg.className = 'placeholder';
             placeholderImg.textContent = '?';
             square.appendChild(placeholderImg);
         }
 
-        // Add title above the square
+        // Ajoute le titre au dessus tu carré
         const name = document.createElement('div');
         name.className = 'achievement-name';
         name.textContent = achievement.name;
         container.appendChild(name);
 
-        // Add the square to the container
+
         container.appendChild(square);
 
-        // Add description below the square (initially hidden)
+        // ajoute la description (caché initialement)
         const description = document.createElement('div');
         description.className = 'achievement-description';
         description.textContent = achievement.description;
         container.appendChild(description);
 
-        // Add the container to the achievements list
+
         achievementsListElem.appendChild(container);
     });
 }

@@ -1,11 +1,11 @@
 ﻿
 //liste des batiments
 const buildings = [
-    { name: 'Paw', cost: 10, cps: 0.1, amount: 0, totalBuilt: 0, image: '../Img/paw.png' },
-    { name: 'Bone', cost: 100, cps: 1, amount: 0, totalBuilt: 0, image: '../Img/bone.jpg' },
-    { name: 'Factory', cost: 1000, cps: 10, amount: 0, totalBuilt: 0, image: '../Img/factory.png' },
-    { name: 'Doggo Park', cost: 5000, cps: 50, amount: 0, totalBuilt: 0, image: '../Img/park.jpg' },
-    { name: 'Kennel', cost: 20000, cps: 200, amount: 0, totalBuilt: 0, image: '../Img/kennel.jpg' },
+    { name: 'Paw', cost: 10, cps: 0.1, amount: 0, totalBuilt: 0, Multipliers: 1, image: '../Img/paw.png' },
+    { name: 'Bone', cost: 100, cps: 1, amount: 0, totalBuilt: 0, Multipliers: 1, image: '../Img/bone.jpg' },
+    { name: 'Factory', cost: 1000, cps: 10, amount: 0, totalBuilt: 0, Multipliers: 1, image: '../Img/factory.png' },
+    { name: 'Doggo Park', cost: 5000, cps: 50, amount: 0, totalBuilt: 0, Multipliers: 1, image: '../Img/park.jpg' },
+    { name: 'Kennel', cost: 20000, cps: 200, amount: 0, totalBuilt: 0, Multipliers: 1, image: '../Img/kennel.jpg' },
 ];
 
 
@@ -25,22 +25,32 @@ function renderBuildings() {
 
             // Crée le contenu HTML initial
             buildingDiv.innerHTML = `
-                <img src="${building.image}" alt="${building.name}" class="building-icon">
-                <div class="building-info"></div>
-                <button class="buy-button" onclick="buyBuilding(${index})">Buy ${building.name}</button>
-                <button class="sell-button" onclick="sellBuilding(${index})">Sell ${building.name}</button>
+            <img src="${building.image}" alt="${building.name}" class="building-icon">
+            <div class="building-info">
+                <p class="building-name">${building.name}</p>
+                <p class="building-cost">Cost: ${building.cost} Doggos</p>
+                <p class="building-amount">Owned: ${building.amount}</p>
+            </div>
+
+            <div class="button-container">
+                <button class="buy-button" onclick="buyBuilding(${index})">Buy</button>
+                <button class="sell-button" onclick="sellBuilding(${index})">Sell</button>
+            </div>
             `;
 
             buildingsElem.appendChild(buildingDiv);
         }
 
         // Met à jour dynamiquement les informations et l'état des boutons
-        const buildingInfo = buildingDiv.querySelector('.building-info');
+        const buildCost = buildingDiv.querySelector('.building-cost');
+        const buildAmount = buildingDiv.querySelector('.building-amount');
+
         const buyButton = buildingDiv.querySelector('.buy-button');
         const sellButton = buildingDiv.querySelector('.sell-button');
 
         // Met à jour les informations du bâtiment
-        buildingInfo.textContent = `${building.name} (Cost: ${building.cost} cookies, Owned: ${building.amount})`;
+        buildCost.textContent = `Cost : ${building.cost} Doggos`;
+        buildAmount.textContent = ` Owned : ${building.amount}`;
 
         // Active/désactive les boutons en fonction des conditions
         buyButton.disabled = cookies < building.cost;
