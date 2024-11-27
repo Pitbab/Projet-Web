@@ -59,19 +59,11 @@ header {
     border-radius: 5px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    height: 600px;
+    min-height: 800px;
 }
 
 .middle-panel {
-    flex: 1.5; /* Plus grand que les autres */
     border: 1px solid #ddd;
-}
-
-#left-panel button{
-    position: absolute;
-
-    margin-left: 70px;
-
 }
 
 /* ======= Tabs ======= */
@@ -120,7 +112,8 @@ header {
 
 /* ======= Buildings & Upgrades ======= */
 #upgrades, #buildings {
-    max-height: 250px;
+    max-height: 300px;
+    min-height: 300px;
     overflow-y: auto;
     padding: 10px;
     border: 1px solid #ddd;
@@ -149,8 +142,15 @@ header {
 .building-info {
     flex: 1;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: 14px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .buy-button, .sell-button {
@@ -177,8 +177,28 @@ button {
     border: none;
     cursor: pointer;
     outline: none;
-    margin-top: 50px;
+    padding: 0;
+    margin: 0;
     transition: transform 0.2s ease; /* Transition fluide pour le rebond */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+}
+
+#clickButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0;
+    display: block;
+}
+
+#main-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
 }
 
 /* ======= Start Panel ======= */
@@ -256,6 +276,74 @@ button {
     display: block;
 }
 
+.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 36px;
+    font-weight: bold;
+    color: #999; /* couleur quand bloqué */
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+/* Style for the upgrade container */
+.upgrade-container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 10px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+}
+
+/* Style for the upgrade info (name and cost) */
+.upgrade-info-container {
+    margin-bottom: 10px;
+}
+
+.upgrade-info {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Style for the cost part of the upgrade */
+.cost {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Style for the buy button */
+.buy-container {
+    margin-top: 10px;
+}
+
+.buy-button {
+    padding: 10px 15px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+.buy-button:hover {
+    background-color: #ff9900;
+}
+
+/* Button disabled state */
+.buy-button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
 /* ======= Particle Effects ======= */
 .particle {
     position: absolute;
@@ -303,7 +391,7 @@ button {
 
 /* Style pour l'éclaboussure de points */
 .click-effect {
-    position: absolute;
+    position: relative;
     font-size: 20px;
     animation: pop 0.5s ease forwards;
 }
@@ -319,3 +407,40 @@ button {
     }
 }
 
+#floatingButtonsContainer {
+    flex: 1;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+
+.floating-button {
+    position: absolute;
+    background-color: #ffcc00;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    animation: floatButtonAnimation 6s linear infinite;
+    flex: 1;
+}
+
+@keyframes floatButtonAnimation {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(50px);
+    }
+}

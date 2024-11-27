@@ -48,7 +48,18 @@ function buyUpgrade(index) {
     const upgrade = upgrades[index];
     if (cookies >= upgrade.cost && !upgrade.purchased) {
         cookies -= upgrade.cost;
-        clickMultiplier *= upgrade.multiplier;
+
+        if (upgrade.target === "Click") {
+            // For click upgrades
+            clickMultiplier *= upgrade.multiplier;
+        } else if (upgrade.target === "Building" && upgrade.subTarget) {
+            // For building upgrades
+            const building = buildings.find(b => b.name === upgrade.subTarget);
+            if (building) {
+                building.Multipliers *= upgrade.multiplier;
+            }
+        }
+
         upgrade.purchased = true;
 
         UpgradeSound.play();
