@@ -151,6 +151,30 @@ setInterval(generateCookies, DisplayFrameRate);
 updateDisplay();
 renderAchievements();
 
+// Récupérez le bouton
+const toggleThemeButton = document.getElementById('toggleThemeButton');
+
+// Vérifiez le mode actuel dans localStorage (persistance)
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    toggleThemeButton.textContent = 'Mode Clair ☀️';
+}
+
+// Ajoutez un gestionnaire pour basculer le thème
+toggleThemeButton.addEventListener('click', () => {
+    // Bascule la classe dark-mode sur le body
+    document.body.classList.toggle('dark-mode');
+
+    // Changez le texte du bouton selon le thème actif
+    if (document.body.classList.contains('dark-mode')) {
+        toggleThemeButton.textContent = 'Mode Clair ☀️';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        toggleThemeButton.textContent = 'Mode Sombre 🌙';
+        localStorage.setItem('theme', 'light');
+    }
+});
 
 
 
