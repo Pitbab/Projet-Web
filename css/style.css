@@ -12,6 +12,7 @@ body, html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* Pour que l'image reste fixe lors du défilement
 }
 
 /* Superposition */
@@ -50,6 +51,7 @@ header {
     width: 100%;
     gap: 20px;
     padding: 10px;
+    margin-left: -10px;
 }
 
 /* ======= Panels ======= */
@@ -566,9 +568,11 @@ body {
 /* Texte au-dessus du bouton dans le mode sombre */
 body.dark-mode #cookieCount,
 body.dark-mode #cpsCount,
-body.dark-mode #main-infos p  {
+body.dark-mode #main-infos p    ² {
     color: #FFFFFF;
     font-weight: bold;
     font-size: 18px;
+}
+
 }
 
