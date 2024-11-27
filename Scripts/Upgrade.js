@@ -23,7 +23,7 @@ function renderUpgrades() {
 
             // Update the upgrade info (name and cost)
             if (!upgrade.purchased) {
-                upgradeInfo.innerHTML = `${upgrade.name} (Cost: ${upgrade.cost} cookies)`;
+                upgradeInfo.innerHTML = `${upgrade.name} (Cost: ${upgrade.cost} doggos)`;
                 buyButton.disabled = cookies < upgrade.cost; // Enable/disable based on cookie count
             }
         } else {
