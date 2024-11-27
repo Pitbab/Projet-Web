@@ -75,7 +75,7 @@ document.getElementById("startButton").addEventListener("click", function() {
     startMusic();
 });
 
-const floatingButtonsContainer = document.getElementById('game');
+const floatingButtonsContainer = document.getElementById('main');
 
 function createFloatingButton() {
     const button = document.createElement('button');
@@ -95,7 +95,7 @@ function createFloatingButton() {
 
     // Ajouter un événement au clic
     button.addEventListener('click', () => {
-        cookies += cookies*randomPercentage; // Ajoutez les points
+        cookies += cookies*(randomPercentage * 0.01); // Ajoutez les points
         updateDisplay(); // Mettez à jour l'affichage
         button.remove(); // Supprimez le bouton
     });
