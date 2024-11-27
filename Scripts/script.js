@@ -80,7 +80,9 @@ const floatingButtonsContainer = document.getElementById('game');
 function createFloatingButton() {
     const button = document.createElement('button');
     button.classList.add('floating-button');
-    button.innerText = "+1%";
+
+    const randomPercentage = Math.floor(Math.random() * 5) + 1; // Random percentage between 1 and 5
+    button.innerText = `+${randomPercentage}%`;
 
     // Positionnement aléatoire
     const containerWidth = floatingButtonsContainer.offsetWidth;
@@ -93,7 +95,7 @@ function createFloatingButton() {
 
     // Ajouter un événement au clic
     button.addEventListener('click', () => {
-        cookies += cookies*0.01; // Ajoutez les points
+        cookies += cookies*randomPercentage; // Ajoutez les points
         updateDisplay(); // Mettez à jour l'affichage
         button.remove(); // Supprimez le bouton
     });
