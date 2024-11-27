@@ -1,6 +1,6 @@
 ﻿
-const cookieCountElem = document.getElementById('cookieCount');
-const cpsCountElem = document.getElementById('cpsCount');
+const cookieCountElem = document.getElementById('doggoCount');
+const cpsCountElem = document.getElementById('dpsCount');
 const buildingsElem = document.getElementById('buildings');
 const upgradesElem = document.getElementById('upgrades');
 const achievementsListElem = document.getElementById('achievementsList');
@@ -36,8 +36,8 @@ function calculateCPS() {
 
 //met à jour l'écran (les batiments et les upgrades)
 function updateDisplay() {
-    cookieCountElem.textContent = Math.floor(cookies);
-    cpsCountElem.textContent = calculateCPS();
+    cookieCountElem.textContent = Math.floor(cookies).toLocaleString();
+    cpsCountElem.textContent = calculateCPS().toFixed(1);
     renderBuildings();
     renderUpgrades();
 }
@@ -118,12 +118,16 @@ function startFloatingButtons() {
 
 /*Fonction pour creer des particule autour du clic*/
 document.getElementById("clickButton").addEventListener("click", function (event) {
+    const button = event.target;
     const particleCount = 10; // Nombre de particules par clic
+
+    button.classList.add("clicked");
+
+    // Générer une position aléatoire autour du clic
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement("div");
         particle.classList.add("particle");
 
-        // Générer une position aléatoire autour du clic
         const angle = Math.random() * 2 * Math.PI; // Angle aléatoire
         const radius = Math.random() * 50; // Distance maximale
         const x = event.clientX + Math.cos(angle) * radius + window.scrollX;
@@ -140,7 +144,13 @@ document.getElementById("clickButton").addEventListener("click", function (event
             particle.remove();
         }, 1000); // Temps égal à la durée de l'animation
     }
+
+
+    setTimeout(() => {
+        button.classList.remove("clicked");
+    }, 300);
 });
+
 // Lancer les boutons flottants lorsque le jeu démarre
 document.getElementById("startButton").addEventListener("click", function() {
     startFloatingButtons();
