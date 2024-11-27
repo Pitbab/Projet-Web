@@ -12,7 +12,7 @@ body, html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Pour que l'image reste fixe lors du défilement
+    background-attachment: fixed; /* Pour que l'image reste fixe lors du défilement*/
 }
 
 /* Superposition */
@@ -368,6 +368,7 @@ button {
     }
 }
 
+
 /* ======= Sounds Options ======= */
 .SoundsOptions {
     display: flex;
@@ -446,6 +447,7 @@ button {
         transform: translateY(50px);
     }
 }
+
 /* Mode sombre : appliqué à tout le body */
 body.dark-mode {
     background-color: #121212;
@@ -560,19 +562,13 @@ body.dark-mode #achievementsList p {
     color: #FFD700;
     font-weight: bold;
 }
-body {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-}
+
 /* Texte au-dessus du bouton dans le mode sombre */
-body.dark-mode #cookieCount,
-body.dark-mode #cpsCount,
-body.dark-mode #main-infos p    ² {
+body.dark-mode #cookieCount, body.dark-mode #cpsCount, body.dark-mode #main-infos p{
     color: #FFFFFF;
     font-weight: bold;
     font-size: 18px;
 }
 
-}
+
 
