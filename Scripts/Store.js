@@ -64,7 +64,7 @@ function buyUpgrade(index) {
 
         UpgradeSound.play();
 
-        showNotification(`🛠️ Upgrade Purchased: ${upgrade.name}`);
+        //showNotification(`🛠️ Upgrade Purchased: ${upgrade.name}`);
         updateDisplay();
     }
 }

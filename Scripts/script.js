@@ -75,12 +75,12 @@ document.getElementById("startButton").addEventListener("click", function() {
     startMusic();
 });
 
-const floatingButtonsContainer = document.getElementById('floatingButtonsContainer');
+const floatingButtonsContainer = document.getElementById('game');
 
 function createFloatingButton() {
     const button = document.createElement('button');
     button.classList.add('floating-button');
-    button.innerText = "+1000";
+    button.innerText = "+1%";
 
     // Positionnement aléatoire
     const containerWidth = floatingButtonsContainer.offsetWidth;
@@ -93,7 +93,7 @@ function createFloatingButton() {
 
     // Ajouter un événement au clic
     button.addEventListener('click', () => {
-        cookies += 1000; // Ajoutez les points
+        cookies += cookies*0.01; // Ajoutez les points
         updateDisplay(); // Mettez à jour l'affichage
         button.remove(); // Supprimez le bouton
     });
