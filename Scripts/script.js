@@ -176,5 +176,18 @@ toggleThemeButton.addEventListener('click', () => {
     }
 });
 
+function updateProgressBar() {
+    const nextAchievement = achievements.find(achievement => !achievement.unlocked); // Trouver le prochain succès non débloqué
+    if (nextAchievement) {
+        const progress = Math.min((cookies / nextAchievement.requirement) * 100, 100); // Calcule la progression en pourcentage
+        document.getElementById('progressBar').style.width = `${progress}%`; // Mise à jour de la largeur de la barre
+        document.getElementById('progressText').textContent = `Progression: ${Math.floor(progress)}% (Prochain succès: ${nextAchievement.requirement} cookies)`; // Affichage du pourcentage et du prochain objectif
+    } else {
+        document.getElementById('progressBar').style.width = '100%'; // Si tous les succès sont débloqués
+        document.getElementById('progressText').textContent = 'Tous les succès débloqués!';
+    }
+}
+
+
 
 
