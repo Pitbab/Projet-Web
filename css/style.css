@@ -495,68 +495,67 @@ body.dark-mode h1, body.dark-mode h3, body.dark-mode p {
 /* Texte principal */
 body.dark-mode {
     background-color: #121212; /* Fond sombre */
-    color: #E0E0E0;           /* Texte légèrement gris pour moins de fatigue visuelle */
-}
+    color: #E0E0E0;      }
 
 /* Texte des titres */
 body.dark-mode h1, body.dark-mode h3 {
-    color: #FFFFFF;           /* Titres en blanc pour les mettre en évidence */
+    color: #FFFFFF;
 }
 
 /* Notifications */
 body.dark-mode #notification {
-    background-color: #333333; /* Fond sombre mais contrasté */
-    color: #FFD700;            /* Texte jaune pour attirer l'attention */
+    background-color: #333333;
+    color: #FFD700;
 }
 
 /* Texte des boutons */
 body.dark-mode button {
-    color: #E0E0E0;           /* Texte gris clair */
-    font-weight: bold;        /* Ajout de gras pour la lisibilité */
+    color: #E0E0E0;
+    font-weight: bold;
 }
 
 /* Progrès (texte dans la barre de progression) */
 body.dark-mode #progressText {
-    color: #FFFFFF;           /* Texte bien lisible */
+    color: #FFFFFF;
 }
 
 /* Améliorations spécifiques aux textes */
 body.dark-mode p {
-    color: #CCCCCC;           /* Texte secondaire en gris clair */
+    color: #CCCCCC;
 }
 /* Boutons au repos */
 body.dark-mode button {
-    background-color: #444444; /* Fond sombre avec contraste modéré */
-    color: #E0E0E0;            /* Texte clair */
-    border: 1px solid #555555; /* Bordure discrète */
+    background-color: #444444;
+    color: #E0E0E0;
+    border: 1px solid #555555;
 }
 
 /* Boutons au survol */
 body.dark-mode button:hover {
-    background-color: #555555; /* Fond plus clair pour indiquer une action possible */
-    border-color: #FFFFFF;     /* Bordure blanche pour se démarquer */
-    color: #FFFFFF;            /* Texte blanc vif */
+    background-color: #555555;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
 }
 
 /* Bordures générales */
 body.dark-mode #game {
-    border: 1px solid #666666; /* Bordure légèrement plus claire que l'arrière-plan */
+    border: 1px solid #666666;
 }
 /* Barre de progression */
 body.dark-mode #progressContainer {
-    background-color: #333333; /* Fond de la barre */
+    background-color: #333333;
     border: 1px solid #555555;
 }
 body.dark-mode #progressBar {
     background-color: #4CAF50; /* Barre verte vive */
 }
 body.dark-mode #progressText {
-    color: #FFFFFF; /* Texte clair pour être bien lisible */
+    color: #FFFFFF;
 }
 
 /* Succès débloqués */
 body.dark-mode #achievementsList p {
-    color: #FFD700; /* Texte doré pour les succès débloqués */
+    color: #FFD700;
     font-weight: bold;
 }
 body {
@@ -568,8 +567,8 @@ body {
 body.dark-mode #cookieCount,
 body.dark-mode #cpsCount,
 body.dark-mode #main-infos p  {
-    color: #FFFFFF; /* Texte blanc vif pour un meilleur contraste */
-    font-weight: bold; /* Texte en gras pour une meilleure lisibilité */
-    font-size: 18px; /* Légèrement agrandi */
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
 }
 
