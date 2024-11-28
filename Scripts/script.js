@@ -46,9 +46,9 @@ function updateDisplay() {
 function incrementCookie() {
 
     //update counts
-    cookies += clickMultiplier;
+    cookies += clickMultiplier * cheatMultiplier;
     playerClicks ++;
-    manualCookies += clickMultiplier;
+    manualCookies += clickMultiplier * cheatMultiplier;
 
     updateDisplay();
     achievementManager.checkCookieAchievements(cookies);

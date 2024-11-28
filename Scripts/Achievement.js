@@ -48,8 +48,8 @@ const achievements = [
     new Achievement('Click God', 50000, TriggerType.CLICK, 'Click 50,000 times.', "Img/Achievements/Cursor.png"),
 
     // Time Played
-    new Achievement('Dedicated Player', 120, TriggerType.TIME, 'Play for 2 minutes straight.', "Img/Achievements/Time.png"),
-    new Achievement('Time Keeper', 3600, TriggerType.TIME, 'Play for 1 hour straight.', "Img/Achievements/Time.png"),
+    new Achievement('Dedicated Player', 60, TriggerType.TIME, 'Play for 1 minutes straight.', "Img/Achievements/Time.png"),
+    new Achievement('Time Keeper', 120, TriggerType.TIME, 'Play for 2 minutes straight.', "Img/Achievements/Time.png"),
     new Achievement('Time Veteran', 86400, TriggerType.TIME, 'Play for 24 hours total.', "Img/Achievements/Time.png"),
     new Achievement('Doggo Devotee', 604800, TriggerType.TIME, 'Play for a week total.', "Img/Achievements/Time.png"),
 

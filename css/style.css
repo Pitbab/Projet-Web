@@ -467,6 +467,21 @@ button {
     margin-bottom: 10px;
 }
 
+.cheat-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/* Style for the toggle checkbox */
+.cheat-label input[type="checkbox"] {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
 
 #clickButton:active {
     transform: scale(0.9); /* Réduction temporaire lors du clic */
