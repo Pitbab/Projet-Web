@@ -18,6 +18,7 @@ function buyBuilding(index) {
 
         achievementManager.checkBuildingTypeAchievements(building.name, building.totalBuilt)
         achievementManager.checkTotalBuildingAchievements(totalBuildingConstructed);
+        achievementManager.checkDPSAchievements(calculateCPS());
     }
 }
 
@@ -66,5 +67,7 @@ function buyUpgrade(index) {
 
         //showNotification(`🛠️ Upgrade Purchased: ${upgrade.name}`);
         updateDisplay();
+
+        achievementManager.checkDPSAchievements(calculateCPS());
     }
 }
